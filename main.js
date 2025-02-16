@@ -106,9 +106,13 @@ checkoutButton.addEventListener('click', handleCheckout);
 const clearCartButton = document.createElement('button'); // New Clear Cart Button
 clearCartButton.textContent = "Clear Cart";
 clearCartButton.id = "clear-cart-button"; // Set ID for styling or additional handling
-document.body.appendChild(clearCartButton); // Append to body (you can position it wherever appropriate)
+clearCartButton.style.width = "100%"; // Make sure it's full width like the checkout button
+clearCartButton.style.marginTop = "10px"; // Space between buttons
+clearCartButton.addEventListener('click', clearCart); // Attach clear cart handler
 
-clearCartButton.addEventListener('click', clearCart); // Attach the clear cart handler
+// Append the Clear Cart button after the Checkout button
+const cartElement = document.getElementById('cart');
+cartElement.appendChild(clearCartButton); // Appending to the cart section
 
 // Initial fetch of products on page load
 fetchProducts();
