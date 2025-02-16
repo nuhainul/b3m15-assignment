@@ -1,4 +1,5 @@
 const cart = [];
+
 const productContainer = document.getElementById('product-container');
 const cartCountElement = document.getElementById('cart-count');
 const cartTotalElement = document.getElementById('cart-total');
@@ -80,6 +81,34 @@ function displayCartItems() {
         cartItemsElement.appendChild(cartItem);
     });
 }
+
+// Function to clear the cart
+function clearCart() {
+    cart.length = 0; // Empty the cart array
+    updateCart(); // Refresh the cart display
+}
+
+// Function to handle checkout
+function handleCheckout() {
+    if (cart.length === 0) {
+        alert("Your cart is empty!");
+    } else {
+        const summary = cart.map(item => `${item.title} - $${item.price} x ${item.quantity}`).join('\n');
+        const totalCost = `Subtotal: $${cartSubtotalElement.textContent}\nFinal Total: $${cartTotalElement.textContent}`;
+        alert(`Checkout Summary:\n${summary}\n\n${totalCost}`);
+    }
+}
+
+// Attach event listeners to buttons
+const checkoutButton = document.getElementById('checkout-button');
+checkoutButton.addEventListener('click', handleCheckout);
+
+const clearCartButton = document.createElement('button'); // New Clear Cart Button
+clearCartButton.textContent = "Clear Cart";
+clearCartButton.id = "clear-cart-button"; // Set ID for styling or additional handling
+document.body.appendChild(clearCartButton); // Append to body (you can position it wherever appropriate)
+
+clearCartButton.addEventListener('click', clearCart); // Attach the clear cart handler
 
 // Initial fetch of products on page load
 fetchProducts();

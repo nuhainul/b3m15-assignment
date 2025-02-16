@@ -26,7 +26,7 @@ main {
 /* Product container styles */
 .product-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid layout */
     gap: 20px;
 }
 
@@ -111,4 +111,31 @@ main {
 
 #checkout-button:hover {
     background-color: #0056b3;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column; /* Stack cart and product container on smaller screens */
+        align-items: center;
+    }
+
+    .cart {
+        width: 100%; /* Make cart full width */
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-card h3 {
+        font-size: 1em; /* Adjust header font size on smaller screens */
+    }
+
+    .total {
+        font-size: 1em; /* Adjust total font size */
+    }
+
+    .add-to-cart {
+        padding: 10px; /* Adjust button padding for better touch area */
+    }
 }
